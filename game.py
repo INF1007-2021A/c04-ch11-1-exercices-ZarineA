@@ -48,7 +48,7 @@ class Weapon:
 
 	@staticmethod
 	def make_unarmed():
-		return Weapon("Unarmed", Weapon.UNARMED_POWER, 0)
+		return Weapon("Unarmed", Weapon.UNARMED_POWER, 1)
 
 
 class Character:
