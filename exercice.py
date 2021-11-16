@@ -19,6 +19,7 @@ def main():
 	turns = run_battle(c1, c2)
 	print(f"The battle ended in {turns} turns.")
 
+
 if __name__ == "__main__":
 	main()
 
