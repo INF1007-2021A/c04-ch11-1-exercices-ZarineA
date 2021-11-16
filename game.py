@@ -46,9 +46,9 @@ class Weapon:
 	def min_level(self, value: int) -> None:
 		self.__min_level = value
 
-	@staticmethod
-	def make_unarmed():
-		return Weapon("Unarmed", Weapon.UNARMED_POWER, 1)
+	@classmethod
+	def make_unarmed(cls):
+		return cls("Unarmed", cls.UNARMED_POWER, 1)
 
 
 class Character:
@@ -62,7 +62,7 @@ class Character:
 	:param level: Le niveau d'expérience du personnage
 	"""
 
-	def __init__(self, name: str, max_hp: float, attack: int, defense: int, level: int) -> None:
+	def __init__(self, name: str, max_hp: float, attack: float, defense: float, level: int) -> None:
 		self.__name = name
 		self.max_hp = max_hp
 		self.attack = attack
@@ -87,20 +87,20 @@ class Character:
 
 	# --- attack
 	@property
-	def attack(self) -> int:
+	def attack(self) -> float:
 		return self.__attack
 
 	@attack.setter
-	def attack(self, value: int) -> None:
+	def attack(self, value: float) -> None:
 		self.__attack = value
 
 	# -- defense
 	@property
-	def defense(self) -> int:
+	def defense(self) -> float:
 		return self.__defense
 
 	@defense.setter
-	def defense(self, value: int) -> None:
+	def defense(self, value: float) -> None:
 		self.__defense = value
 
 	# --- level
@@ -135,7 +135,7 @@ class Character:
 	def hp(self, value: float) -> None:
 		self.__hp = utils.clamp(value, 0, self.max_hp)
 
-	def compute_damage(self, defender) -> (float, bool):
+	def compute_damage(self, defender: "Character") -> (float, bool):
 		PROBABILTY_CRIT_2 = 1/16
 		MIN_RANDOM, MAX_RANDOM = 85/100, 100/100
 
